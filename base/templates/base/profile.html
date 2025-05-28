@@ -1,0 +1,54 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <main class="profile-page layout layout--3">
+        <div class="container">
+            <!-- Topics Start -->
+            {% include 'base/topics_component.html' %}
+            <!-- Topics End -->
+
+            <!-- Room List Start -->
+            <div class="roomList">
+                <div class="profile">
+                    <div class="profile__avatar">
+                        <div class="avatar avatar--large active">
+                            <img src="https://randomuser.me/api/portraits/men/11.jpg" />
+                        </div>
+                    </div>
+
+                    <div class="profile__info">
+                        <h3>{{ user.username }}</h3>
+                        <p>@{{ user.username }}</p>
+                        {% if request.user == user %}
+                            <a href="{% url 'update-user' %}" class="btn btn--main btn--pill">Edit Profile</a>
+                        {% endif %}
+                    </div>
+
+                    <div class="profile__about">
+                        <h3>About</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="roomList__header">
+                    <div>
+                        <h2>Study Rooms Hosted by {{ user.username }}</h2>
+                    </div>
+                </div>
+
+                <!-- Feed Component Section -->
+                {% include 'base/feed_component.html' %}
+                <!-- End Feed Component -->
+
+            </div>
+            <!-- Room List End -->
+
+            <!-- Activities Section -->
+            {% include 'base/activity_component.html' %}
+            <!-- Activities End -->
+             
+        </div>
+    </main>
+{% endblock content %}
